@@ -1,4 +1,4 @@
-# Keep Notes
+# Magic Notes
 This is an attempt to replicate the Google Keep product.
 
 ## Tech Stack
