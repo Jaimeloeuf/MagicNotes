@@ -1,0 +1,17 @@
+<!-- If there are no notes at all -->
+<!-- @Todo change the way of checkinf if the list of notes is avail -->
+<p *ngIf="Notes.isEmpty">Currently no notes! Create a new note first.</p>
+
+<!-- Make sure the current selected note is not null! Empty string note is fine. -->
+<div *ngIf="currentNote != null">
+    <h2>{{note.title}}</h2>
+    <div>
+        <label>name: </label>
+
+        <!-- Instead of enter key, save when user clicks away from the component -->
+        <input [(ngModel)]="note.text" (keyup.enter)="add()" placeholder="Text">
+    </div>
+
+    <button (click)="save()" [disabled]="currentNote.isEmpty">Close</button>
+    <button (click)="goBack()">Back</button>
+</div>
