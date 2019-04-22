@@ -1,6 +1,10 @@
 # Magic Notes
 This is an attempt to replicate the Google Keep product.
 
+## Repo Structure
+- MagicNotes (Frontend code made with Angulardart webapp)
+- MagicServer (Backend server code)
+
 ## Tech Stack
 Below is the current stack, might change.
 #### Front end:
