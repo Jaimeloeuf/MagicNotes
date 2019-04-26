@@ -1,6 +1,11 @@
-
-<login></login>
-
 <header></header>
 
-<todo-list></todo-list>
+<nav>
+    <!-- routerLink directive is bound to an expression whose value tells router where to go when user clicks on the link. -->
+    <a [routerLink]="RoutePaths.login.toUrl()" [routerLinkActive]="'active'">Login</a>
+    <a [routerLink]="RoutePaths.logout.toUrl()" [routerLinkActive]="'active'">Logout</a>
+</nav>
+<router-outlet [routes]="Routes.all"></router-outlet>
+
+<!-- Move the below thing to be rendered only when the route is called too -->
+<!-- <todo-list></todo-list> -->

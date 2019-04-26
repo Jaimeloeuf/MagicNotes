@@ -1,6 +1,5 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-import 'package:http/http.dart';
 
 @Component(
     selector: "login",
@@ -24,6 +23,20 @@ class LoginComponent {
 
   // if (response.status == 200) return true;
   // }
+
+  @override
+  void ngOnInit() {
+    // Do stuff when component is created
+
+    // emailLoginBlocStream =
+    //     emailLoginBloc.session.isSignedIn.listen((bool isSignedIn) {
+    //   if (!isSignedIn) {
+    //     emailLoginBloc.emailSink.add('');
+    //   } else {
+    //     router.navigate('shop');
+    //   }
+    // });
+  }
 
   @override
   void ngOnDestroy() {
@@ -71,17 +84,4 @@ class LoginComponent {
 //       baseBloc.error.add('Please fill in the login details.');
 //     }
 //   }
-
-//   @override
-//   void ngOnInit() {
-//     emailLoginBlocStream =
-//         emailLoginBloc.session.isSignedIn.listen((bool isSignedIn) {
-//       if (!isSignedIn) {
-//         emailLoginBloc.emailSink.add('');
-//       } else {
-//         router.navigate('shop');
-//       }
-//     });
-//   }
-
 // }
