@@ -9,6 +9,7 @@ import 'route_paths.dart';
 /// Name the imports, to avoid analyzer error. These are all for the component factories
 // The below imports are currently example imports from another project, will be changed
 import './Login/login_component.template.dart' as login_template;
+import './Settings/settings_component.template.dart' as settings_template;
 
 export 'route_paths.dart';
 
@@ -33,6 +34,12 @@ class Routes {
       routePath: RoutePaths.logout,
       component: login_template.LoginComponentNgFactory);
 
+  
+  // To Change the settings code
+  static final settings = RouteDefinition(
+      routePath: RoutePaths.settings,
+      component: settings_template.SettingsComponentNgFactory);
+
   // The Routes.all field is a list of route definitions.
   static final all = <RouteDefinition>[
     // notes,
@@ -40,6 +47,7 @@ class Routes {
 
     login,
     logout,
+    settings,
 
     // Below redirect is to set the "/" path to be redirected to show all notes on startup
 

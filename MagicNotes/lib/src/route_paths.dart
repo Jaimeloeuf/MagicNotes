@@ -9,6 +9,7 @@ class RoutePaths {
   static final notes = RoutePath(path: 'notes');
   static final login = RoutePath(path: 'login');
   static final logout = RoutePath(path: 'logout');
+  static final settings = RoutePath(path: 'settings');
   // static final dashboard = RoutePath(path: 'dashboard');
 
   static final id = 'id';
