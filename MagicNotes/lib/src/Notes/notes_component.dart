@@ -7,28 +7,30 @@ import 'package:angular_router/angular_router.dart';
 
 // import the notes service
 
-
 @Component(
-  selector: 'all-notes',
-  templateUrl: 'all_notes_component.html',
-  styleUrls: ['all_notes_component.css'],
-  directives: [NgFor, NgIf])
+    selector: 'notes',
+    templateUrl: 'notes_component.html',
+    styleUrls: ['notes_component.css'],
+    directives: [NgFor, NgIf])
 class AllNotesComponent implements OnInit {
   Note selected_note;
   List<Note> _notes;
 
-  get notes => _notes;
-
-  // Define hero service property for this component
   final NotesService _notesService;
   final Router _router;
 
-  // AppComponent Contructor that takes in a HeroService instance, by dependency injection.
-  // Inject the router too
+  // AppComponent Contructor takes in HeroService and router dependency via injection.
   AllNotesComponent(this._notesService, this._router);
 
-  // On click handler, that takes in the selected hero
-  void onSelect(Note hero) => selected_note = hero;
+  get notes => _notes;
+
+  // On click handler that takes in the selected note
+  void onSelect(Note hero) {
+    // Set the note to be the selected_note first
+    selected_note = hero;
+
+    // Navigate to the /note/:id route for the user to edit that note directly.
+  }
 
   // Set the list of heroes from the Hero services
   Future<void> _getNotes() async => _notes = await _notesService.getAll();

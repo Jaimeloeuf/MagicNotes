@@ -1,12 +1,17 @@
 <header></header>
 
+<!-- Below is the navigation or Header bar. Which might be made into a Component some day for more features -->
 <nav>
     <!-- routerLink directive is bound to an expression whose value tells router where to go when user clicks on the link. -->
     <a [routerLink]="RoutePaths.login.toUrl()" [routerLinkActive]="'active'">Login</a>
     <a [routerLink]="RoutePaths.logout.toUrl()" [routerLinkActive]="'active'">Logout</a>
     <a [routerLink]="RoutePaths.settings.toUrl()" [routerLinkActive]="'active'">Settings</a>
 </nav>
+
+<!-- Add in the search box here, to be on the same "line" as the nav bar -->
+<search-box></search-box>
+
 <router-outlet [routes]="Routes.all"></router-outlet>
 
-<!-- Move the below thing to be rendered only when the route is called too -->
+<!-- Move the todo list to render only when route is called -->
 <!-- <todo-list></todo-list> -->

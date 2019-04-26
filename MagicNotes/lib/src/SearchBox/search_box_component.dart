@@ -1,7 +1,7 @@
 import 'package:angular/angular.dart';
-import 'search_service.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:MagicNotes/src/SearchBox/search_service.dart';
 
 /* 
 
@@ -14,11 +14,11 @@ import 'package:angular_router/angular_router.dart';
  */
 
 @Component(
-  selector: 'search',
-  templateUrl: 'search_component.html',
-  styleUrls: ['search_component.css'],
+  selector: 'search-box',
+  templateUrl: 'search_box_component.html',
+  styleUrls: ['search_box_component.css'],
   directives: [NgFor, NgIf, routerDirectives, formDirectives],
-  providers: [ClassProvider(SearchService)],
+  // providers: [ClassProvider(SearchService)],
 )
 class SearchComponent {
   /* binded using the form directive? */
@@ -26,11 +26,12 @@ class SearchComponent {
   /// Search value is the string entered into the search box by the user.
   String search_value;
 
-  final SearchService _searchService;
+  // final SearchService _searchService;
 
   final Router _router;
 
-  SearchComponent(this._searchService, this._router);
+  // SearchComponent(this._searchService, this._router);
+  SearchComponent(this._router);
 
   /// Method to save note through the service
   void save() {}

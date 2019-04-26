@@ -1,0 +1,27 @@
+<h2>All your notes!</h2>
+
+<ul>
+    <!-- <li *ngFor="let note of notes" (click)="onSelect(note)" [class.selected]="note === selected_note"> -->
+    <li *ngFor="let note of notes" (click)="onSelect(note)">
+
+        <!-- Maybe the note id can be removed, using for now a debug -->
+        <span>{{note.id}}</span>
+
+        <div>
+            {{hero.title}}
+        </div>
+
+        <div>
+            {{note.content}}
+        </div>
+    </li>
+</ul>
+
+
+
+<!-- SHould move the note component -->
+
+<!-- <div *ngIf="selected_note != null">
+    <h2>{{selected_note.title}}</h2>
+    <button (click)="viewNote()">View Details</button>
+</div> -->
