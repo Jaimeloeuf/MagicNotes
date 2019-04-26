@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'search_service.dart';
+import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 /* 
@@ -16,7 +17,7 @@ import 'package:angular_router/angular_router.dart';
   selector: 'search',
   templateUrl: 'search_component.html',
   styleUrls: ['search_component.css'],
-  directives: [NgFor, NgIf, routerDirectives],
+  directives: [NgFor, NgIf, routerDirectives, formDirectives],
   providers: [ClassProvider(SearchService)],
 )
 class SearchComponent {
@@ -36,6 +37,6 @@ class SearchComponent {
 
   void goBack() {
     // When the user clicks the X button to go back to the "all-notes" view
-    _router.navigate(Route_paths.all_notes);
+    // _router.navigate(Route_paths.all_notes);
   }
 }

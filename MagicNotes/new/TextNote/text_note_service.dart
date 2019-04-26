@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:MagicNotes/src/Note.dart';
 import 'package:http/http.dart';
 
 // Finnish up the Notes definition library package and import it here.
@@ -11,11 +12,11 @@ class TextNoteService {
   /// Get the http service through dependency injection
   TextNoteService(this._http);
 
-  Future<List<TextNote>> getAll() async {
+  Future<List<Note>> getAll() async {
     try {
       final response = await _http.get(_heroesUrl);
       final TextNotes = (_extractData(response) as List)
-          .map((json) => Hero.fromJson(
+          .map((json) => Note.fromJson(
               json)) // To implement a json to TextNote object method in the class
           .toList();
 
@@ -26,7 +27,10 @@ class TextNoteService {
   }
 
   /// Search through all notes in memory. firstWhere is used as [note.id] is unique
-  Future<TextNote> get(int id) async =>
+  Future<Note> get(int id) async =>
+      (await getAll()).firstWhere((note) => note.id == id);
+
+  Future<Note> delete(int id) async =>
       (await getAll()).firstWhere((note) => note.id == id);
 
   dynamic _extractData(Response resp) => json.decode(resp.body)['data'];

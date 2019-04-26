@@ -1,5 +1,8 @@
+import 'package:MagicNotes/src/Note.dart';
+import 'package:MagicNotes/src/TextNote/text_note_service.dart';
+import 'package:MagicNotes/src/route_paths.dart';
 import 'package:angular/angular.dart';
-import 'package:MagicNotes/src/TextNoteComponent/text_note_service.dart';
+// import 'package:MagicNotes/src/TextNoteComponent/text_note_service.dart';
 import 'package:angular_router/angular_router.dart';
 
 @Component(
@@ -7,7 +10,7 @@ import 'package:angular_router/angular_router.dart';
   templateUrl: 'text_note_component.html',
   styleUrls: ['text_note_component.css'],
   directives: [NgFor, NgIf, routerDirectives],
-  providers: [ClassProvider(TextNoteService)],
+  // providers: [ClassProvider(TextNoteService)],
 )
 class TextNoteComponent implements OnInit {
   /* Perhaps the note can be binded using the form directive? */
@@ -22,8 +25,8 @@ class TextNoteComponent implements OnInit {
   final TextNoteService _textNoteService;
   final Router _router;
 
-  List<TextNote> textNotes;
-  TextNote currentNote;
+  List<Note> textNotes;
+  Note currentNote;
 
   /// Get the textNoteService and the router via dependency injection
   TextNoteComponent(this._textNoteService, this._router);
@@ -44,7 +47,7 @@ class TextNoteComponent implements OnInit {
 
 
     // When the user clicks the X button to go back to the "all-notes" view
-    _router.navigate(Route_paths.all_notes);
+    _router.navigate(RoutePaths.notes.path);
   }
 
   // Pass the delete operation to the textNoteService
