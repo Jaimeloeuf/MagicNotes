@@ -3,6 +3,9 @@
 <!-- Only display the editor if the note is not null -->
 <div *ngIf="note != null">
 
+    <!-- Maybe the note id can be removed, using for now a debug -->
+    <span>{{note.id}}</span>
+
     <div>
         <input [(ngModel)]="note.title" placeholder="Title">
     </div>

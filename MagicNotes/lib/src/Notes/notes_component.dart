@@ -50,7 +50,7 @@ class AllNotesComponent implements OnInit {
 
   // Given a note id, create a URL for that note and return it.
   String noteUrl(int id) =>
-      RoutePaths.note.toUrl(parameters: {RoutePaths.id: '$id'});
+      RoutePaths.note.toUrl(parameters: {RoutePaths.idParam: '$id'});
 
   // Navigate to the note editor displaying the selected note
   Future<NavigationResult> viewNote() =>
