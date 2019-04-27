@@ -3,7 +3,28 @@ import 'dart:convert';
 import 'package:MagicNotes/src/Note.dart';
 import 'package:http/http.dart';
 
+/* 
+To rename this module and change the dependency imports of other modules.
+ */
+
+// Mock notes and the service will be deleted once actual service is completed
 class NotesService {
+  final List<Note> notes = [
+    Note.basic(1),
+    Note.basic(2),
+    Note.basic(3),
+    Note.basic(4),
+    Note.basic(5),
+  ];
+
+   Future<List<Note>> getAll() async => notes;
+
+  // Future<Note> get(int id) async =>
+  //     (await getAll()).firstWhere((note) => note.id == id);
+  Note get(int id) => notes.firstWhere((note) => note.id == id);
+}
+
+/* class NotesService {
   /// API endpoint to get the Notes
   static const _notesUrl = 'api/notes';
   final Client _http;
@@ -55,4 +76,4 @@ class NotesService {
     print(e); // for demo purposes only
     return Exception('Server error; cause: $e');
   }
-}
+} */

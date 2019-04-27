@@ -18,24 +18,30 @@ class NoteComponent implements OnActivate {
 
   @override
   void onActivate(_, RouterState current) async {
-    // onActivate hook is called, when the component is called through a route
-    // The first positional arguement is not used, thus it is "thrown away" with the dash
-    final id = getId(current.parameters);
+    /*  onActivate hook is called, when the component is called through a route
+        The first positional arguement is not used, thus it is "thrown away" with the dash */
 
+    // Create the final id with the self-invoking function
+    final id = ((params) {
+      final id = params['id'];
+      // Parse first as Route parameters are always strings
+      return id == null ? null : int.tryParse(id);
+    })(current.parameters); // Pass the Route parameters in
+
+    // Get note from the notes_service and set the [note] property
     if (id != null) note = await (_notesService.get(id));
   }
-
-  int getId(Map<String, String> parameters) {
-    final id = parameters['id'];
-
-    // Route parameters are always strings, thus need to parse first
-    return id == null ? null : int.tryParse(id);
-  }
+  // void ngOnActivate() {}
 
   // void saveNote() => _notesService.save(note);
   // Below is dummy function to prevent compilation from breaking
-  void saveNote() => _notesService;
+  void saveNote() {
+    
+  }
 
   // Instead of going back 1 browser session, which may cause user to leave the app, use the router to route user to all notes view instead.
   void goBack() => _location.back();
+
+
+  // Use the ngOnDestroy hook method to close the data stream
 }

@@ -8,6 +8,7 @@ import 'route_paths.dart';
 
 /// Name the imports, to avoid analyzer error. These are all for the component factories
 // The below imports are currently example imports from another project, will be changed
+import './Notes/notes_component.template.dart' as notes_template;
 import './Login/login_component.template.dart' as login_template;
 import './Settings/settings_component.template.dart' as settings_template;
 
@@ -15,11 +16,11 @@ export 'route_paths.dart';
 
 // These RouteDefinitions are static, as we are not using this class to make objects
 class Routes {
-  // static final notes = RouteDefinition(
-  //     // The router matches this path against the URL
-  //     routePath: RoutePaths.notes,
-  //     // The (factory of the) component that activates when this route is entered
-  //     component: hero_list_template.HeroListComponentNgFactory);
+  static final notes = RouteDefinition(
+      // The router matches this path against the URL
+      routePath: RoutePaths.notes,
+      // The (factory of the) component that activates when this route is entered
+      component: notes_template.AllNotesComponentNgFactory);
 
   // static final note = RouteDefinition(
   //     routePath: RoutePaths.note,
@@ -42,7 +43,7 @@ class Routes {
 
   // The Routes.all field is a list of route definitions.
   static final all = <RouteDefinition>[
-    // notes,
+    notes,
     // note,
 
     login,
@@ -50,11 +51,9 @@ class Routes {
     settings,
 
     // Below redirect is to set the "/" path to be redirected to show all notes on startup
-
-    // Temporarily show the login page on startup
     RouteDefinition.redirect(
       path: '',
-      redirectTo: RoutePaths.login.toUrl(),
+      redirectTo: RoutePaths.notes.toUrl(),
     )
   ];
 }
