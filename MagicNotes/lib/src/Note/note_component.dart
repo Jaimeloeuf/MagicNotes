@@ -4,6 +4,15 @@ import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
+/*
+  @Doc
+  This module contains the note editor.
+
+  @Todo
+  - Move the dependency injection of the NotesService out of the @Component annotation
+    and into the main dependency injector creator and injection point in main.dart
+*/
+
 @Component(
     selector: 'note',
     templateUrl: "note_component.html",

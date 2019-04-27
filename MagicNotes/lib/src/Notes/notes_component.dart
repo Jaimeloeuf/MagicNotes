@@ -5,7 +5,14 @@ import 'package:MagicNotes/src/route_paths.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 
-// import the notes service
+/*
+  @Doc
+  This module holds the component that displays all the Notes.
+
+  @Todo
+  - Move the dependency injection of the NotesService out of the @Component annotation
+    and into the main dependency injector creator and injection point in main.dart
+*/
 
 @Component(
     selector: 'notes',
@@ -41,15 +48,11 @@ class AllNotesComponent implements OnInit {
   @override
   void ngOnInit() => _getNotes();
 
-  // String noteUrl(int id) =>
-  //     RoutePaths.notes.toUrl(parameters: {RoutePaths.id: '$id'});
+  // Given a note id, create a URL for that note and return it.
+  String noteUrl(int id) =>
+      RoutePaths.note.toUrl(parameters: {RoutePaths.id: '$id'});
 
-  String noteUrl(int id) {
-      var path = RoutePaths.note.toUrl(parameters: {RoutePaths.id: '$id'});
-      print(path);
-      return path;
-  }
-
+  // Navigate to the note editor displaying the selected note
   Future<NavigationResult> viewNote() =>
       _router.navigate(noteUrl(selected_note.id));
 }

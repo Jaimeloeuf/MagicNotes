@@ -2,7 +2,20 @@
 
 <!-- Only display the editor if the note is not null -->
 <div *ngIf="note != null">
-    <input [(ngModel)]="note.title" placeholder="Title">
-    <input [(ngModel)]="note.content" placeholder="Note">
-    <button (click)="saveNote()">Save Note</button>
+
+    <div>
+        <input [(ngModel)]="note.title" placeholder="Title">
+    </div>
+
+    <div>
+        <input [(ngModel)]="note.content" placeholder="Note">
+    </div>
+
+    <div>
+        <button (click)="saveNote()">Save Note</button>
+
+        <!-- To change the way goBack works. goBack should also be triggered if user clicks out of the editor -->
+        <button (click)="goBack()">Back</button>
+    </div>
+
 </div>
