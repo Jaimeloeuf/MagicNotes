@@ -8,7 +8,8 @@ import 'package:angular_router/angular_router.dart';
     selector: 'note',
     templateUrl: "note_component.html",
     styleUrls: ['note_component.css'],
-    directives: [coreDirectives, formDirectives])
+    directives: [coreDirectives, formDirectives],
+    providers: [ClassProvider(NotesService)])
 class NoteComponent implements OnActivate {
   Note note;
   final NotesService _notesService;
@@ -35,13 +36,10 @@ class NoteComponent implements OnActivate {
 
   // void saveNote() => _notesService.save(note);
   // Below is dummy function to prevent compilation from breaking
-  void saveNote() {
-    
-  }
+  void saveNote() {}
 
   // Instead of going back 1 browser session, which may cause user to leave the app, use the router to route user to all notes view instead.
   void goBack() => _location.back();
-
 
   // Use the ngOnDestroy hook method to close the data stream
 }

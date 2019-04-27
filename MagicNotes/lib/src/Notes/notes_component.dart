@@ -31,6 +31,7 @@ class AllNotesComponent implements OnInit {
     selected_note = note;
 
     // Navigate to the /note/:id route for the user to edit that note directly.
+    viewNote();
   }
 
   // Set the list of notes from the _notesService
@@ -40,8 +41,14 @@ class AllNotesComponent implements OnInit {
   @override
   void ngOnInit() => _getNotes();
 
-  String noteUrl(int id) =>
-      RoutePaths.notes.toUrl(parameters: {RoutePaths.id: '$id'});
+  // String noteUrl(int id) =>
+  //     RoutePaths.notes.toUrl(parameters: {RoutePaths.id: '$id'});
+
+  String noteUrl(int id) {
+      var path = RoutePaths.note.toUrl(parameters: {RoutePaths.id: '$id'});
+      print(path);
+      return path;
+  }
 
   Future<NavigationResult> viewNote() =>
       _router.navigate(noteUrl(selected_note.id));

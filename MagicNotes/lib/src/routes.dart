@@ -9,6 +9,7 @@ import 'route_paths.dart';
 /// Name the imports, to avoid analyzer error. These are all for the component factories
 // The below imports are currently example imports from another project, will be changed
 import './Notes/notes_component.template.dart' as notes_template;
+import './Note/note_component.template.dart' as note_template;
 import './Login/login_component.template.dart' as login_template;
 import './Settings/settings_component.template.dart' as settings_template;
 
@@ -22,9 +23,9 @@ class Routes {
       // The (factory of the) component that activates when this route is entered
       component: notes_template.AllNotesComponentNgFactory);
 
-  // static final note = RouteDefinition(
-  //     routePath: RoutePaths.note,
-  //     component: dashboard_template.DashboardComponentNgFactory);
+  static final note = RouteDefinition(
+      routePath: RoutePaths.note,
+      component: note_template.NoteComponentNgFactory);
 
   static final login = RouteDefinition(
       routePath: RoutePaths.login,
@@ -44,7 +45,7 @@ class Routes {
   // The Routes.all field is a list of route definitions.
   static final all = <RouteDefinition>[
     notes,
-    // note,
+    note,
 
     login,
     logout,
