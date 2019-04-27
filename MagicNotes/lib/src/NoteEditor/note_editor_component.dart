@@ -14,17 +14,17 @@ import 'package:angular_router/angular_router.dart';
 */
 
 @Component(
-    selector: 'note',
-    templateUrl: "note_component.html",
-    styleUrls: ['note_component.css'],
+    selector: 'note-editor',
+    templateUrl: "note_editor_component.html",
+    styleUrls: ['note_editor_component.css'],
     directives: [coreDirectives, formDirectives],
     providers: [ClassProvider(NotesService)])
-class NoteComponent implements OnActivate {
+class NoteEditorComponent implements OnActivate {
   Note note;
   final NotesService _notesService;
   final Location _location;
 
-  NoteComponent(this._notesService, this._location);
+  NoteEditorComponent(this._notesService, this._location);
 
   @override
   void onActivate(_, RouterState current) async {

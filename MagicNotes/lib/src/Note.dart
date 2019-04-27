@@ -42,6 +42,9 @@ class Note {
   /// Default constructor requires a unique ID
   Note(this.id, {this.noteType: NoteType.BasicText});
 
+  Note.full(this.id, this.title, this.content, {this.noteType: NoteType.BasicText});
+  Note.full_basic(id, title, content) : this.full(id, title, content, noteType: NoteType.BasicText);
+
   Note.basic(id) : this(id, noteType: NoteType.BasicText);
   Note.markdown(id) : this(id, noteType: NoteType.Markdown);
   Note.list(id) : this(id, noteType: NoteType.List);

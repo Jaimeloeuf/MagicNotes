@@ -1,17 +1,21 @@
-<h2>All your notes!</h2>
+<!-- 
+    Just like keep, instead of deleteing the notes component and create the note editor component.
+    Maybe layover the notes component. So that the perfomance is smoother with less rewriting.
+ -->
 
-<ul>
-    <!-- <li *ngFor="let note of notes" (click)="onSelect(note)" [class.selected]="note === selected_note"> -->
-    <li *ngFor="let note of notes" (click)="onSelect(note)">
+<ul class="notes">
+    <!-- Apply the selected class css if the note matches the selected_note property value -->
+    <li *ngFor="let note of notes" (click)="onSelect(note)" [class.selected]="note === selected_note">
 
         <!-- Maybe the note id can be removed, using for now a debug -->
-        <span>{{note.id}}</span>
+        <!-- The badge class is a style class -->
+        <span class="badge">{{note.id}}</span>
 
-        <div>
+        <div class="text">
             {{note.title}}
         </div>
 
-        <div>
+        <div class="text">
             {{note.content}}
         </div>
 

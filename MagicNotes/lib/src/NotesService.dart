@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:MagicNotes/src/Note.dart';
 import 'package:http/http.dart';
+import 'package:MagicNotes/src/Note.dart';
 
 /* 
 To rename this module and change the dependency imports of other modules.
@@ -10,11 +10,11 @@ To rename this module and change the dependency imports of other modules.
 // Mock notes and the service will be deleted once actual service is completed
 class NotesService {
   final List<Note> notes = [
-    Note.basic(1),
-    Note.basic(2),
-    Note.basic(3),
-    Note.basic(4),
-    Note.basic(5),
+    Note.full_basic(1, "title1", "Hello world"),
+    Note.full_basic(2, "t", "Hello1 world"),
+    Note.full_basic(3, "i", "Hellodsf world"),
+    Note.full_basic(4, "wow this is cool", "rld"),
+    Note.full_basic(5, "sfgfg", "Bye"),
   ];
 
    Future<List<Note>> getAll() async => notes;
