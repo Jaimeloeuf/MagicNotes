@@ -1,4 +1,24 @@
 <!-- The search box is just a input box with a binding -->
 <div><input [(ngModel)]="search_value" placeholder="Search"></div>
 
-<p>{{search_value}}</p>
+<!-- Only display this container if the search value is not empty -->
+<!-- Update:
+
+    Just like how keep does it,
+    Show the search bar and info when the user clicks and focuses into the search bar.
+    The search bar should also disappear when the user clicks away.
+-->
+<div *ngIf="search_value != ''">
+    
+    <h2>Search Results:</h2>
+
+    <!-- To change the way goBack works. goBack should also be triggered if user clicks out of the editor -->
+    <button (click)="goBack()">Back</button>
+
+</div>
+
+
+<div class="search_results">
+    <!-- Temporarily show the search value as the search result -->
+    <p>{{search_value}}</p>
+</div>

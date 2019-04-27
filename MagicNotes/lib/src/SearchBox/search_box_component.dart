@@ -1,3 +1,4 @@
+import 'package:MagicNotes/src/route_paths.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
@@ -17,27 +18,33 @@ import 'package:MagicNotes/src/SearchBox/search_service.dart';
   selector: 'search-box',
   templateUrl: 'search_box_component.html',
   styleUrls: ['search_box_component.css'],
-  directives: [NgFor, NgIf, routerDirectives, formDirectives],
+  directives: [NgIf, routerDirectives, formDirectives],
   // providers: [ClassProvider(SearchService)],
 )
 class SearchComponent {
   /* binded using the form directive? */
 
   /// Search value is the string entered into the search box by the user.
-  String search_value;
+  /// The inital value is an empty string. Needed for the check in the template
+  String search_value = "";
 
   // final SearchService _searchService;
-
   final Router _router;
 
   // SearchComponent(this._searchService, this._router);
   SearchComponent(this._router);
 
-  /// Method to save note through the service
-  void save() {}
+  /*  Implement a lifecycle hook to close display the search result when search value changes
+      Also remove the note editor or the notes list if displaying the search result */
 
   void goBack() {
+    // Clear the search_value when the user navigates back
+    search_value = "";
+
     // When the user clicks the X button to go back to the "all-notes" view
-    // _router.navigate(Route_paths.all_notes);
+    _router.navigate(RoutePaths.notes.toUrl());
+
+    // Or just navigate back 1 page
+    // _location.back();
   }
 }
