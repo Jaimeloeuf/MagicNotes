@@ -22,11 +22,7 @@ class NotesService {
   // Future<Note> get(int id) async =>
   //     (await getAll()).firstWhere((note) => note.id == id);
   Note get(int id) => notes.firstWhere((note) => note.id == id);
-
-  // void save(Note note) {
-  //   // Note _note = notes.firstWhere((_note) => _note.id == note.id);
-  //   // _note = note;
-  // }
+  Note selected;
 }
 
 /* class NotesService {
