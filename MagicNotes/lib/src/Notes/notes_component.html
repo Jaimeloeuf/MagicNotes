@@ -3,6 +3,8 @@
     Maybe layover the notes component. So that the perfomance is smoother with less rewriting.
  -->
 
+<note-editor></note-editor>
+
 <ul class="notes">
     <!-- Apply the selected class css if the note matches the selected_note property value -->
     <li *ngFor="let note of notes" (click)="onSelect(note)" [class.selected]="note === selected_note">

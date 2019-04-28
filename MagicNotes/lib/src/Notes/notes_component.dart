@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:MagicNotes/src/Note.dart';
-import 'package:MagicNotes/src/NotesService.dart';
+import 'package:MagicNotes/src/notes_service.dart';
 import 'package:MagicNotes/src/route_paths.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';

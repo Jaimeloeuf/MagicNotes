@@ -1,15 +1,16 @@
-<h1>This is the note editor section</h1>
-
 <!-- Only display the editor if the note is not null -->
 <div *ngIf="note != null">
 
     <!-- Maybe the note id can be removed, using for now a debug -->
     <span>{{note.id}}</span>
 
+
+    <!-- The property of the notes have a direct 2 way binding to the form data. -->
+    <!-- Should forms and input be used or should the textarea tag be used? -->
     <div>
         <input [(ngModel)]="note.title" placeholder="Title">
     </div>
-
+    
     <div>
         <input [(ngModel)]="note.content" placeholder="Note">
     </div>

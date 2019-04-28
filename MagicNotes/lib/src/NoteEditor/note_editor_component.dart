@@ -1,5 +1,5 @@
 import 'package:MagicNotes/src/Note.dart';
-import 'package:MagicNotes/src/NotesService.dart';
+import 'package:MagicNotes/src/notes_service.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
@@ -43,9 +43,8 @@ class NoteEditorComponent implements OnActivate {
   }
   // void ngOnActivate() {}
 
-  // void saveNote() => _notesService.save(note);
-  // Below is dummy function to prevent compilation from breaking
-  void saveNote() {}
+  // Save note action is implemented by the note service
+  void saveNote() => _notesService.save(note);
 
   // Instead of going back 1 browser session, which may cause user to leave the app, use the router to route user to all notes view instead.
   void goBack() => _location.back();
