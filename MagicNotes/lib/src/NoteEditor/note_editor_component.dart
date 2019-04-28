@@ -18,7 +18,7 @@ import 'package:angular_router/angular_router.dart';
     templateUrl: "note_editor_component.html",
     styleUrls: ['note_editor_component.css'],
     directives: [coreDirectives, formDirectives],
-    providers: [ClassProvider(NotesService)])
+    /* providers: [ClassProvider(NotesService)] */)
 class NoteEditorComponent implements OnActivate {
   Note note;
   final NotesService _notesService;
@@ -44,7 +44,7 @@ class NoteEditorComponent implements OnActivate {
   // void ngOnActivate() {}
 
   // Save note action is implemented by the note service
-  void saveNote() => _notesService.save(note);
+  // void saveNote() => _notesService.save(note);
 
   // Instead of going back 1 browser session, which may cause user to leave the app, use the router to route user to all notes view instead.
   void goBack() => _location.back();

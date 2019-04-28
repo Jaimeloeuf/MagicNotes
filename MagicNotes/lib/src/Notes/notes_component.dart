@@ -19,8 +19,8 @@ import 'package:angular_router/angular_router.dart';
     templateUrl: 'notes_component.html',
     styleUrls: ['notes_component.css'],
     directives: [NgFor, NgIf],
-    providers: [ClassProvider(NotesService)])
-class AllNotesComponent implements OnInit {
+    /* providers: [ClassProvider(NotesService)] */)
+class AllNotesComponent implements OnInit, OnActivate {
   Note selected_note;
   List<Note> _notes;
 
@@ -42,11 +42,22 @@ class AllNotesComponent implements OnInit {
   }
 
   // Set the list of notes from the _notesService
-  Future<void> _getNotes() async => _notes = await _notesService.getAll();
+  // Update this, to make the notes component stream data from the service, and only get data when data is changed.
+  Future<void> _getNotes() async {
+    _notes = await _notesService.getAll();
+    print('Below is the received list');
+    for (int i = 0; i < notes.length; i++) print(notes[i].content);
+  }
 
   // Implementation of the Component Init lifecycle hook
   @override
   void ngOnInit() => _getNotes();
+
+  @override
+  void onActivate(_, RouterState current) {
+    print('Notes route activated');
+    _getNotes();
+  }
 
   // Given a note id, create a URL for that note and return it.
   String noteUrl(int id) =>

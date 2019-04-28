@@ -9,7 +9,7 @@ To rename this module and change the dependency imports of other modules.
 
 // Mock notes and the service will be deleted once actual service is completed
 class NotesService {
-  final List<Note> notes = [
+  List<Note> notes = [
     Note.full_basic(1, "title1", "Hello world"),
     Note.full_basic(2, "t", "Hello1 world"),
     Note.full_basic(3, "i", "Hellodsf world"),
@@ -17,20 +17,16 @@ class NotesService {
     Note.full_basic(5, "sfgfg", "Bye"),
   ];
 
-   Future<List<Note>> getAll() async => notes;
+  Future<List<Note>> getAll() async => notes;
 
   // Future<Note> get(int id) async =>
   //     (await getAll()).firstWhere((note) => note.id == id);
   Note get(int id) => notes.firstWhere((note) => note.id == id);
 
-  void save(Note note) {
-    Note _note = notes.firstWhere((_note) => _note.id == note.id);
-
-    // How do you actually save?
-    // _note = note;
-
-  
-  }
+  // void save(Note note) {
+  //   // Note _note = notes.firstWhere((_note) => _note.id == note.id);
+  //   // _note = note;
+  // }
 }
 
 /* class NotesService {
