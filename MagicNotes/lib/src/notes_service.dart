@@ -10,29 +10,15 @@ import 'package:MagicNotes/src/Note.dart';
     Thus view component talk to the NotesBloc
     Then the NotesBloc talk to the notes_service
 
+    Data is in the notesService
+    There is Always only 1 copy of the data in memory as NotesService is now based on a singleton system
+
   - Update NotesService to be a singleton class desgined to maintain connnection with the server, because for any web client, there should be 1 active connection to the server at any given time. So even if NotesService is injected many times into different NotesBloc as NotesBloc can be spawned many times for different view components, there is only 1 active connection to the server. This is t prevent multi connection problems such as race condition and server port overload due to the huge number of active concurrent connections.
   - There might be some security concerns with using a singleton. Some components that are not allowed to use NotesBloc might be able to, even if they are shown before user login, thus an advanced XSS attack technically can control the app and access the user data.
   - But connection can only be made to server when user successfully signed in, so even if other componetns have access to NotesBloc without authentication, the server wont establish a connection and front-end still cant obtain any data. Thus I think it is fine to just do injectioon of the service to all of the component since even if the service is hi-jacked in the first place, without authentication no user data can be retrieved.
 */
 
-// Mock notes and the service will be deleted once actual service is completed
-/* class NotesService {
-  List<Note> notes = [
-    Note.full_basic(1, "title1", "Hello world"),
-    Note.full_basic(2, "t", "Hello1 world"),
-    Note.full_basic(3, "i", "Hellodsf world"),
-    Note.full_basic(4, "wow this is cool", "rld"),
-    Note.full_basic(5, "sfgfg", "Bye"),
-  ];
-
-  Future<List<Note>> getAll() async => notes;
-
-  // Future<Note> get(int id) async =>
-  //     (await getAll()).firstWhere((note) => note.id == id);
-  Note get(int id) => notes.firstWhere((note) => note.id == id);
-  Note selected;
-} */
-
+// Mock notes and service will be deleted once actual service is completed
 List<Note> notes = [
   Note.full_basic(1, "title1", "Hello world"),
   Note.full_basic(2, "t", "Hello1 world"),
