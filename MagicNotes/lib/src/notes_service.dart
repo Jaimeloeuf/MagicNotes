@@ -16,7 +16,7 @@ import 'package:MagicNotes/src/Note.dart';
 */
 
 // Mock notes and the service will be deleted once actual service is completed
-class NotesService {
+/* class NotesService {
   List<Note> notes = [
     Note.full_basic(1, "title1", "Hello world"),
     Note.full_basic(2, "t", "Hello1 world"),
@@ -29,6 +29,34 @@ class NotesService {
 
   // Future<Note> get(int id) async =>
   //     (await getAll()).firstWhere((note) => note.id == id);
+  Note get(int id) => notes.firstWhere((note) => note.id == id);
+  Note selected;
+} */
+
+List<Note> notes = [
+  Note.full_basic(1, "title1", "Hello world"),
+  Note.full_basic(2, "t", "Hello1 world"),
+  Note.full_basic(3, "i", "Hellodsf world"),
+  Note.full_basic(4, "wow this is cool", "rld"),
+  Note.full_basic(5, "sfgfg", "Bye"),
+];
+
+class NotesService {
+  // Static const reference to the singleton object of UserData created using named constructor "_internal".
+  static final NotesService _singleton = new NotesService._internal();
+
+  // Internal constructor used to create the singleton
+  NotesService._internal() {
+    // Try to establish a connection with the server
+  }
+
+  // Factory constructor method returning the singleton object
+  factory NotesService() {
+    return _singleton;
+  }
+
+  Future<List<Note>> getAll() async => notes;
+
   Note get(int id) => notes.firstWhere((note) => note.id == id);
   Note selected;
 }
