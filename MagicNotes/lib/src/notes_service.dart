@@ -3,9 +3,17 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:MagicNotes/src/Note.dart';
 
-/* 
-To rename this module and change the dependency imports of other modules.
- */
+/*  Notes:
+    To change, so NotesBloc is controller in charge of streaming data and changes to that data, to and from view components.
+    While notes_service is the controller in charge of streaming data to and from the server.
+
+    Thus view component talk to the NotesBloc
+    Then the NotesBloc talk to the notes_service
+
+  - Update NotesService to be a singleton class desgined to maintain connnection with the server, because for any web client, there should be 1 active connection to the server at any given time. So even if NotesService is injected many times into different NotesBloc as NotesBloc can be spawned many times for different view components, there is only 1 active connection to the server. This is t prevent multi connection problems such as race condition and server port overload due to the huge number of active concurrent connections.
+  - There might be some security concerns with using a singleton. Some components that are not allowed to use NotesBloc might be able to, even if they are shown before user login, thus an advanced XSS attack technically can control the app and access the user data.
+  - But connection can only be made to server when user successfully signed in, so even if other componetns have access to NotesBloc without authentication, the server wont establish a connection and front-end still cant obtain any data. Thus I think it is fine to just do injectioon of the service to all of the component since even if the service is hi-jacked in the first place, without authentication no user data can be retrieved.
+*/
 
 // Mock notes and the service will be deleted once actual service is completed
 class NotesService {
