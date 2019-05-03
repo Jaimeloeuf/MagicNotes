@@ -1,12 +1,13 @@
-import 'package:MagicNotes/src/Note.dart';
-import 'package:MagicNotes/src/notes_service.dart';
 import 'package:angular/angular.dart';
+import 'package:MagicNotes/src/Note.dart';
+import 'package:MagicNotes/blocs/notes_bloc.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 /*
   @Doc
   This module contains the note editor.
+  Upon navigating to this component via a route, take the note id for the URL and get the note to display for user to edit the note
 
   @Todo
   - Move the dependency injection of the NotesService out of the @Component annotation
@@ -17,17 +18,26 @@ import 'package:angular_router/angular_router.dart';
     selector: 'note-editor',
     templateUrl: "note_editor_component.html",
     styleUrls: ['note_editor_component.css'],
-    directives: [coreDirectives, formDirectives],
+    directives: [coreDirectives, formDirectives]
     /* providers: [ClassProvider(NotesService)] */)
-class NoteEditorComponent implements OnActivate {
+class NoteEditorComponent implements OnActivate, OnInit {
   Note note;
-  final NotesService _notesService;
+
+  final NotesBloc _notesBloc;
   final Location _location;
 
-  NoteEditorComponent(this._notesService, this._location);
+  NoteEditorComponent(this._notesBloc, this._location);
+
+  @override
+  void ngOnInit() {
+    print('editor componentd created');
+    note = _notesBloc.selected;
+  }
 
   @override
   void onActivate(_, RouterState current) async {
+    print('editor called');
+    note = _notesBloc.selected;
     /*  onActivate hook is called, when the component is called through a route
         The first positional arguement is not used, thus it is "thrown away" with the dash */
 
@@ -39,9 +49,8 @@ class NoteEditorComponent implements OnActivate {
     })(current.parameters); // Pass the Route parameters in
 
     // Get note from the notes_service and set the [note] property
-    if (id != null) note = await (_notesService.get(id));
+    if (id != null) note = await (_notesBloc.get(id));
   }
-  // void ngOnActivate() {}
 
   // Save note action is implemented by the note service
   // void saveNote() => _notesService.save(note);
