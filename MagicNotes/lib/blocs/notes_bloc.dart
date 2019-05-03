@@ -10,6 +10,6 @@ class NotesBloc {
   Future<List<Note>> getAll() async => _notesService.getAll();
 
   Note get(int id) => _notesService.get(id);
-  
+
   Note selected;
 }

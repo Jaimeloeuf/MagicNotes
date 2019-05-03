@@ -44,7 +44,6 @@ class NotesService {
   Future<List<Note>> getAll() async => notes;
 
   Note get(int id) => notes.firstWhere((note) => note.id == id);
-  Note selected;
 }
 
 /* class NotesService {

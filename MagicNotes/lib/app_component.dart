@@ -10,6 +10,10 @@ import 'package:MagicNotes/src/SearchBox/search_box_component.dart';
     selector: 'MagicNote',
     styleUrls: ['app_component.css'],
     templateUrl: 'app_component.html',
-    directives: [routerDirectives, HeaderComponent, SearchComponent],
+    directives: [
+      routerDirectives,
+      HeaderComponent,
+      SearchComponent,
+    ],
     exports: [RoutePaths, Routes])
 class AppComponent {}
