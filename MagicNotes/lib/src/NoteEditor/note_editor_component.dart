@@ -18,8 +18,7 @@ import 'package:angular_router/angular_router.dart';
     selector: 'note-editor',
     templateUrl: "note_editor_component.html",
     styleUrls: ['note_editor_component.css'],
-    directives: [coreDirectives, formDirectives]
-    /* providers: [ClassProvider(NotesService)] */)
+    directives: [coreDirectives, formDirectives])
 class NoteEditorComponent implements OnActivate, OnInit {
   Note note;
 

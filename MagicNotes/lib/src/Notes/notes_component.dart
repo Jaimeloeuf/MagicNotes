@@ -11,10 +11,6 @@ import 'package:angular_router/angular_router.dart';
   The view schema is provided by either the view by tag service or the view by search service
 
   @Todo
-  - Move the dependency injection of the NotesService out of the @Component annotation and into the main dependency injector creator and injection point in main.dart
-
-  - Perhaps the dependency injected should be changed to notesbloc and injected from the main injection point.
-
   - Updating so that this component is not destroyed everytime user navigates away and recreated when the user navigates to the route of notes again. Which is problematic due to the need to recreate component redraw and requiring the same resources from the server again and again.
 */
 
@@ -22,23 +18,20 @@ import 'package:angular_router/angular_router.dart';
     selector: 'notes',
     templateUrl: 'notes_component.html',
     styleUrls: ['notes_component.css'],
-    directives: [NgFor, NgIf],
-    providers: [/* ClassProvider(NotesService) */])
+    directives: [NgFor, NgIf])
 class AllNotesComponent implements OnInit /* OnActivate  */ {
   List<Note> _notes;
 
-  // final NotesService _notesService;
   final NotesBloc _notesBloc;
   final Router _router;
 
-  // AppComponent Contructor takes in _notesService and router dependency via injection.
+  // AppComponent Contructor takes in Notes Bloc and router dependency via injection.
   AllNotesComponent(this._notesBloc, this._router);
 
   // Getter for the template to access the private _notes field
-  // To change this to attach the List of notes from a stream from the NotesService
+  // Change this to attach the List of notes from a stream from the Notes Bloc instead
   get notes => _notes;
 
-  // Set the list of notes from the _notesService
   // Update this, to make the notes component stream data from the service, and only get data when data is changed.
   Future<void> _getNotes() async => _notes = await _notesBloc.getAll();
 
@@ -46,9 +39,9 @@ class AllNotesComponent implements OnInit /* OnActivate  */ {
   @override
   void ngOnInit() => _getNotes();
 
-  // Might remove the ngOnInit hook, as the component should not be destroyed and recreated, but rather when navigated too
+  // Might remove the ngOnInit hook, as the component should not be destroyed and recreated, but rather when navigated too and shown. Thus more of display and hide
   // And it should not be updating the whole thing, it should only check if there is anything changed, else do nothing.
-  // See how to make the _notes be available from a stream instead, thus it can always stream data to and from the notesService
+  // See how to make the _notes be available from a stream instead, thus it can always stream data to and from the BLoC object
   // and the notesComponent no longer needs to maintain a copy of the _notes in memory!
   /*  @override
   void onActivate(_, RouterState current) {

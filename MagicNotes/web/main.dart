@@ -1,4 +1,4 @@
-import 'package:MagicNotes/src/notes_service.dart';
+import 'package:MagicNotes/services/notes_service.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:MagicNotes/app_component.template.dart' as ng;
@@ -10,11 +10,14 @@ import 'package:MagicNotes/app_component.template.dart' as ng;
   silently which cause it to be unusable and not injectable to the other components. */
 import 'package:http/http.dart';
 
+import 'package:MagicNotes/blocs/notes_bloc.dart';
+
 import 'main.template.dart' as self;
 
 @GenerateInjector([
   routerProvidersHash,
 
+  ClassProvider(NotesBloc),
   ClassProvider(NotesService),
   // Using a real back end?
   // Import 'package:http/browser_client.dart' and change the above to:
