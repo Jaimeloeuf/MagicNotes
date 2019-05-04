@@ -1,8 +1,8 @@
 import 'package:angular/angular.dart';
-import 'package:MagicNotes/blocs/notes_bloc.dart';
 import 'package:angular_router/angular_router.dart';
 
 // Import the sub components used in this page.
+import 'package:MagicNotes/src/Notes/notes_component.dart';
 import 'package:MagicNotes/src/SearchBox/search_box_component.dart';
 import 'package:MagicNotes/src/NoteEditor/note_editor_component.dart';
 
@@ -25,12 +25,11 @@ import 'package:MagicNotes/src/NoteEditor/note_editor_component.dart';
     NoteEditorComponent
   ],
 )
-class AllNotesComponent implements OnInit /* OnActivate  */ {
-  final NotesBloc _notesBloc;
+class NotesView implements OnInit /* OnActivate  */ {
   final Router _router;
 
   // AppComponent Contructor takes in Notes Bloc and router dependency via injection.
-  AllNotesComponent(this._notesBloc, this._router);
+  NotesView(this._router);
 
   // Implementation of the Component Init lifecycle hook
   @override
