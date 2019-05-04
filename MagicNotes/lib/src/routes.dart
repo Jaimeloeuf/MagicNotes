@@ -8,7 +8,7 @@ import 'route_paths.dart';
 
 /// Name the imports, to avoid analyzer error. These are all for the component factories
 // The below imports are currently example imports from another project, will be changed
-import './Notes/notes_component.template.dart' as notes_template;
+import './NotesView/notes_view_component.template.dart' as notes_view_template;
 import './NoteEditor/note_editor_component.template.dart' as note_editor_template;
 import './Login/login_component.template.dart' as login_template;
 import './Settings/settings_component.template.dart' as settings_template;
@@ -21,7 +21,7 @@ class Routes {
       // The router matches this path against the URL
       routePath: RoutePaths.notes,
       // The (factory of the) component that activates when this route is entered
-      component: notes_template.AllNotesComponentNgFactory);
+      component: notes_view_template.NotesViewNgFactory);
 
   static final note = RouteDefinition(
       routePath: RoutePaths.note,
