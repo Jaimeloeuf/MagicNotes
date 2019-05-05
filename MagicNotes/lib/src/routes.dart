@@ -36,16 +36,17 @@ class Routes {
       routePath: RoutePaths.logout,
       component: login_template.LoginComponentNgFactory);
 
-  
   // To Change the settings code
   static final settings = RouteDefinition(
       routePath: RoutePaths.settings,
       component: settings_template.SettingsComponentNgFactory);
 
+  static final note_only = <RouteDefinition>[note];
+
   // The Routes.all field is a list of route definitions.
   static final all = <RouteDefinition>[
     notes,
-    note,
+    // note,
 
     login,
     logout,

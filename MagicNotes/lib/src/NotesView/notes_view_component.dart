@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:MagicNotes/src/routes.dart';
 
 // Import the sub components used in this page.
 import 'package:MagicNotes/src/Notes/notes_component.dart';
@@ -22,8 +23,10 @@ import 'package:MagicNotes/src/NoteEditor/note_editor_component.dart';
     NgIf,
     SearchComponent,
     AllNotesComponent,
-    NoteEditorComponent
+    NoteEditorComponent,
+    routerDirectives
   ],
+  exports: [RoutePaths, Routes],
 )
 class NotesView implements OnInit /* OnActivate  */ {
   final Router _router;
