@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:MagicNotes/blocs/notes_bloc.dart';
 import 'package:MagicNotes/src/Note.dart';
-import 'package:MagicNotes/src/route_paths.dart';
+// import 'package:MagicNotes/src/route_paths.dart';
+import 'package:MagicNotes/src/routes.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 
@@ -11,6 +12,10 @@ import 'package:angular_router/angular_router.dart';
   The view schema is provided by either the view by tag service or the view by search service
 
   @Todo
+  - Component should not be destroyed and recreated, but shown when navigated to. More like display and hide
+  
+  - Change _notes to update from stream instead, where data is streamed to and from the BLoC object, thus removing the need to maintain a copy of _notes in view component state
+
   - Updating so that this component is not destroyed everytime user navigates away and recreated when the user navigates to the route of notes again. Which is problematic due to the need to recreate component redraw and requiring the same resources from the server again and again.
 */
 
@@ -19,7 +24,7 @@ import 'package:angular_router/angular_router.dart';
     templateUrl: 'notes_component.html',
     styleUrls: ['notes_component.css'],
     directives: [NgFor, NgIf])
-class AllNotesComponent implements OnInit /* OnActivate  */ {
+class AllNotesComponent implements OnInit {
   List<Note> _notes;
 
   final NotesBloc _notesBloc;
@@ -37,23 +42,24 @@ class AllNotesComponent implements OnInit /* OnActivate  */ {
 
   // Implementation of the Component Init lifecycle hook
   @override
-  void ngOnInit() => _getNotes();
-
-  // Might remove the ngOnInit hook, as the component should not be destroyed and recreated, but rather when navigated too and shown. Thus more of display and hide
-  // And it should not be updating the whole thing, it should only check if there is anything changed, else do nothing.
-  // See how to make the _notes be available from a stream instead, thus it can always stream data to and from the BLoC object
-  // and the notesComponent no longer needs to maintain a copy of the _notes in memory!
-  /*  @override
-  void onActivate(_, RouterState current) {
-    print('Notes route activated');
+  // void ngOnInit() => _getNotes();
+  void ngOnInit() {
+    print('All Notes Component created');
     _getNotes();
-  } */
+  }
 
   // Given a note id, create a URL for that note and return it.
-  String noteUrl(int id) =>
-      RoutePaths.note.toUrl(parameters: {RoutePaths.idParam: '$id'});
+  String noteUrl(int id) {
+    var val = RoutePaths.note.toUrl(parameters: {RoutePaths.idParam: '$id'});
+    print(val);
+    return val;
+  }
 
   // onClick handler that navigates to selected note's "/note/:id" route for user to edit the note
-  Future<NavigationResult> viewNote(Note selected_note) =>
-      _router.navigate(noteUrl(selected_note.id));
+  Future<NavigationResult> viewNote(Note selected_note) {
+    print('note selected');
+    _router.navigate(noteUrl(selected_note.id));
+
+    print('after selection');
+  }
 }
